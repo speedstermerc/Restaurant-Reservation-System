@@ -1,0 +1,47 @@
+// commands to create the basic domain entities
+create_restaurant,REST001,Olive Garden,Coral Springs,FL,33071,45,false,6
+create_restaurant,REST002,Cheesecake Factory,Boca Raton,FL,33431,48,false,6
+create_restaurant,REST003,Papa Johns,Lauderdale Lakes,FL,33313,50,false,6
+create_restaurant,REST004,IL Mulino,Tampa,FL,33019,33,false,6
+
+create_customer,CUST001,Angel,Cabrera,Miami,FL,33122,100.0
+create_customer,CUST002,Mark,Moss,Atlanta,GA,30313,100.0
+create_customer,CUST003,Neel,Ganediwal,Parkland,FL,33067,100.0
+create_customer,CUST004,Henry,Owen,Chicago,IL,60629,100.0
+
+make_reservation,CUST001,REST001,4,2024-05-24,19:00,80
+make_reservation,CUST002,REST002,5,2024-05-23,19:00,100
+make_reservation,CUST003,REST003,6,2024-05-24,19:00,70
+
+// unable to make reservation because no other available table at restaurant within two hours
+make_reservation,CUST004,REST001,4,2024-05-24,19:00,100
+
+// unable to make reservation because customer already has another reservation within two hours
+make_reservation,CUST001,REST003,4,2024-05-24,17:30,90
+
+// arrival on time
+customer_arrival,CUST001,REST001,2024-05-24,18:50,19:00
+
+// arrival too early
+customer_arrival,CUST002,REST002,2024-05-23,18:00,19:00
+
+// arrival too late
+customer_arrival,CUST003,REST003,2024-05-24,19:30,19:00
+
+// walk in party (no reservation)               
+customer_arrival,CUST004,REST004,2024-05-23,19:30,null
+
+make_reservation,CUST001,REST003,4,2024-05-25,19:00,70
+customer_arrival,CUST001,REST003,2024-05-25,19:30,19:00
+
+make_reservation,CUST001,REST004,4,2024-05-26,19:00,30
+customer_arrival,CUST001,REST004,2024-05-26,19:30,19:00
+make_reservation,CUST001,REST002,4,2024-05-28,19:00,50
+customer_arrival,CUST001,REST002,2024-05-28,19:10,19:00
+
+// three misses reached, so reset both credits and misses back to 0
+make_reservation,CUST001,REST002,4,2024-05-27,19:00,50
+customer_arrival,CUST001,REST002,2024-05-27,19:30,19:00
+
+// cease the simulation
+exit

@@ -1,0 +1,13 @@
+export PHASE=3
+export INPUT_TEST_CASES=updated_test_cases.txt
+export EXPECTED_RESULTS=updated_test_results_AFTER_CODING.txt
+
+
+
+export PATH_TO_TEST=test/phase_$PHASE
+rm src/*.class
+javac src/Main.java
+java src/Main < $PATH_TO_TEST/$INPUT_TEST_CASES > $PATH_TO_TEST/log.txt
+diff -w -B $PATH_TO_TEST/log.txt $PATH_TO_TEST/$EXPECTED_RESULTS > $PATH_TO_TEST/DIFFERENCE.txt
+rm src/*.class
+code -d  $PATH_TO_TEST/log.txt $PATH_TO_TEST/$EXPECTED_RESULTS

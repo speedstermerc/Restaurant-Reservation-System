@@ -1,0 +1,12 @@
+create_owner, m8, Andrew, Cabrera, Orlando, FL, 32801, 2022-05-30, Fifth Group
+// create a restaurant
+create_restaurant, r2, Hamlet, Boca Raton, FL, 33431, 6, m8, FS817
+// create a single customer
+create_customer, c3, Angel, Rivera, Miami, FL, 33122, 100
+// make a single reservation for the customer at the restaurant
+make_reservation, c3, r2, 4, 2024-05-24, 21:00, 80
+// make an earlier reservation for the customer two hours in the past (OK)
+make_reservation, c3, r2, 4, 2024-05-24, 19:00, 80
+// make another reservation for the customer less than two hours in the past (NOT OK)
+make_reservation, c3, r2, 4, 2024-05-24, 17:01, 80
+exit

@@ -1,0 +1,13 @@
+$Env:PHASE = 3
+$Env:INPUT_TEST_CASES = 'updated_test_cases.txt'
+$Env:EXPECTED_RESULTS = 'updated_test_results_AFTER_CODING.txt'
+
+
+
+$Env:PATH_TO_TEST = 'test//phase_' + $Env:PHASE
+rm src/*.class
+javac src/Main.java
+Get-Content "$Env:PATH_TO_TEST//$Env:INPUT_TEST_CASES" | java src/Main | tee "$Env:PATH_TO_TEST/log_win.txt" | Out-Null
+diff (cat "$Env:PATH_TO_TEST//log_win.txt") (cat "$Env:PATH_TO_TEST//$Env:EXPECTED_RESULTS") > "$Env:PATH_TO_TEST/DIFFERENCE_win.txt"
+rm src/*.class
+code -d $Env:PATH_TO_TEST//log_win.txt $Env:PATH_TO_TEST//$Env:EXPECTED_RESULTS

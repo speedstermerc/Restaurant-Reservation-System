@@ -1,0 +1,24 @@
+
+InputObject                                                        SideIndicator
+-----------                                                        -------------
+Enter commands (type 'exit' to finish):                            =>
+No credits rewarded and no misses added                            =>
+                                                                   <=
+Customer CUST002 (Mark Moss) has arrived at Cheesecake Factory     <=
+Customer CUST003 (Neel Ganediwal) has arrived at Papa Johns        <=
+Customer CUST004 (Henry Owen) has arrived at IL Mulino             <=
+Customer CUST001 (Angel Cabrera) has arrived at Papa Johns         <=
+Enter command:                                                     <=
+Enter command:                                                     <=
+Customer CUST001 (Angel Cabrera) has arrived at IL Mulino          <=
+Enter command:                                                     <=
+Enter command:                                                     <=
+Enter command:                                                     <=
+Enter command:                                                     <=
+Enter command:                                                     <=
+Customer CUST001 (Angel Cabrera) has arrived at Cheesecake Factory <=
+Enter command:                                                     <=
+Enter command:                                                     <=
+stop acknowledged                                                  <=
+simulation terminated                                              <=
+

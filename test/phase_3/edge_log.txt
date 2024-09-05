@@ -1,0 +1,71 @@
+>> create_owner, OWN001, Ricardo, Cardenas, Orlando, FL, 32801, 2022-05-30, Restaurant Brands
+Owner added: OWN001 - Ricardo Cardenas
+
+>> create_restaurant, REST001, Mellow Mushroom, Boca Raton, FL, 33431, 24, OWN001, FS817
+Restaurant created: REST001 (Mellow Mushroom) - Boca Raton, FL 33431
+OWN001 (Ricardo Cardenas) owns REST001 (Mellow Mushroom)
+
+>> create_customer, CUST001, Angel, Cabrera, Miami, FL, 33122, 5199
+Customer added: CUST001 - Angel Cabrera
+
+>> create_menu_item, cheese pizza, dough:mozzarella:tomato sauce
+cheese pizza created
+
+>> create_menu_item, vegetable pizza, dough:mozzarella:olives:mushrooms
+vegetable pizza created
+
+>> create_menu_item, pepperoni pizza, dough:pork:tomato sauce:paprika
+pepperoni pizza created
+
+>> create_menu_item, hawaiian pizza, dough:pineapple:mozzarella:bacon
+hawaiian pizza created
+
+>> create_menu_item, margherita pizza, dough:mozzarella:tomato sauce
+margherita pizza created
+
+>> add_menu_item, cheese pizza, REST001, 52
+REST001) Menu item added: cheese pizza - $52
+
+>> add_menu_item, vegetable pizza, REST001, 52
+REST001) Menu item added: vegetable pizza - $52
+
+>> add_menu_item, hawaiian pizza, REST001, 42
+REST001) Menu item added: hawaiian pizza - $42
+
+>> make_reservation, CUST002, REST001, 4, 2024-05-24, 19:00, 321
+Either customer identifier or restaurant identifier is invalid
+
+>> make_reservation, CUST001, REST002, 4, 2024-05-24, 21:00, 42
+Either customer identifier or restaurant identifier is invalid
+
+>> order_menu_item, CUST001, REST001, null, 19:00, hawaiian pizza, 23
+ERROR: Bill not found
+Ensure that the customer has a reservation or has arrived at the restaurant at 19:00
+
+>> customer_arrival, CUST001, REST001, 2024-05-24, null, 19:00
+Angel Cabrera - Walk-in party
+No credits rewarded and no misses added
+ERROR: during command loop >> execution
+
+
+>> customer_arrival, CUST001, REST001, 2024-05-24, 18:30, 19:00
+Angel Cabrera - Walk-in party
+No credits rewarded and no misses added
+Seats were available, Angel Cabrera seated
+Credits: 0
+Misses: 0
+
+>> order_menu_item, CUST001, REST001, 2024-05-24, 19:00, hawaiisan pizza, 1
+ERROR: Bill not found
+Ensure that the customer has a reservation or has arrived at the restaurant at 19:00
+
+>> order_menu_item, CUST001, REST001, 2024-05-24, 19:00, hawaiiagan pizza, 1
+ERROR: Bill not found
+Ensure that the customer has a reservation or has arrived at the restaurant at 19:00
+
+>> customer_review, CUST001, REST001, 2024-05-24, 19:00, 1, romantic
+ERROR: reservation doesn't exist
+
+>> customer_review, CUST001, REST001, 2024-05-24, 19:00, 23, romantic
+ERROR: reservation doesn't exist
+
